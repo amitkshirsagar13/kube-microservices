@@ -5,7 +5,6 @@
     "author": "amit.kshirsagar.13@gmail.com",
     "description": "NodeJS Microservice Template",
     "dependencies": {
-        "npm": "^6.4.1",
         "express": "latest",
         "swagger-jsdoc": "^3.2.4",
         "swagger-stats": "^0.95.6",
