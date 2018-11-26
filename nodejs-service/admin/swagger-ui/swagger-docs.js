@@ -1,7 +1,13 @@
+const path = require('path');
+const bodyparser = require('body-parser');
+const swaggerUi = require('swagger-ui-express');
 const app = require('../../express/express-server');
 const config = require('../../config');
 const swaggerJSDoc = require('swagger-jsdoc');
 const os = require('os');
+app.use(bodyparser.json({
+    strict: false,
+}));
 // swagger definition
 var swaggerDefinition = {
     info: {
@@ -17,13 +23,20 @@ var options = {
     // import swaggerDefinitions
     swaggerDefinition: swaggerDefinition,
     // path to the API docs
-    apis: ['./**/routes/*.js', 'routes.js'],// pass all in array 
+    apis: [path.resolve(__dirname, '../../server.js')],
+    swaggerUrl: 'http://localhost:3000/admin/v2/api-docs/swagger.json'
 };
 var swaggerSpec = swaggerJSDoc(options);
 
-app.get('/admin/swagger-docs/swagger.json', function (req, res) {
+app.get('/docs', (req, res) => {
+    res.sendFile(path.join(__dirname, 'redoc.html'));
+});
+
+app.get('/admin/v2/api-docs/swagger.json', function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     res.send(swaggerSpec);
 });
+
+app.use('/admin/api-docs', swaggerUi.serve, swaggerUi.setup(null, options));
 
 module.exports = swaggerSpec;
