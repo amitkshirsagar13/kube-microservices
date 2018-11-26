@@ -1,9 +1,12 @@
 {
     "name": "nodejs-service",
     "version": "0.0.1",
-    "main": "startup.js",
+    "main": "server.js",
     "author": "amit.kshirsagar.13@gmail.com",
     "description": "NodeJS Microservice Template",
+    "scripts": {
+        "start": "node server.js"
+    },
     "dependencies": {
         "express": "latest",
         "swagger-jsdoc": "^3.2.4",
