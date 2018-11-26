@@ -1,8 +1,8 @@
 const app = require('../../express/express-server');
-const swaggerSpec = require('../swagger-ui/swagger-docs');
+const middleware = require('./metrics/custom-metrics');
 const swStats = require('swagger-stats');
+middleware.uriPath = '/admin/swagger-stats';
 
-app.use(swStats.getMiddleware({
-    uriPath: '/admin/swagger-stats',
-    swaggerSpec: swaggerSpec
-}));
+app.use(swStats.getMiddleware(middleware));
+
+module.exports = swStats;
