@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const config = require('../config');
 const app = express();
-app.use(cors());
 
 function ignoreFavicon(req, res, next) {
     if (req.originalUrl === '/favicon.ico') {
@@ -13,6 +12,7 @@ function ignoreFavicon(req, res, next) {
 }
 
 app.use(ignoreFavicon);
+app.use(cors());
 
 
 const port = config.app.port;
