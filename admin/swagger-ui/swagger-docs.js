@@ -1,5 +1,7 @@
 const app = require('../../express/express-server');
+const config = require('../../config');
 const swaggerJSDoc = require('swagger-jsdoc');
+const os = require('os');
 // swagger definition
 var swaggerDefinition = {
     info: {
@@ -7,7 +9,7 @@ var swaggerDefinition = {
         version: '1.0.0',
         description: 'Demonstrating how to describe a RESTful API with Swagger',
     },
-    host: 'localhost:3000',
+    host: os.hostname + ':' + config.app.port,
     basePath: '/',
 };
 // options for the swagger docs
