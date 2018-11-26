@@ -11,6 +11,7 @@
 
 #NodeJS packages:
 **/node_modules/
+package-lock.json
 
 # Package Files #
 *.jar
