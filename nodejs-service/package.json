@@ -10,7 +10,8 @@
     "dependencies": {
         "express": "latest",
         "swagger-jsdoc": "^3.2.4",
+        "swagger-parser": "^3.4.1",
         "swagger-stats": "^0.95.6",
-        "swagger-parser": "^3.4.1"
+        "swagger-ui-express": "^4.0.1"
     }
 }
