@@ -24,7 +24,7 @@ var options = {
     swaggerDefinition: swaggerDefinition,
     // path to the API docs
     apis: [path.resolve(__dirname, '../../server.js')],
-    swaggerUrl: 'http://localhost:3000/admin/v2/api-docs/swagger.json'
+    swaggerUrl: 'http://' + os.hostname + ':' + config.app.port + '/admin/v2/api-docs/swagger.json'
 };
 var swaggerSpec = swaggerJSDoc(options);
 
