@@ -8,6 +8,7 @@
         "start": "node server.js"
     },
     "dependencies": {
+        "cors": "^2.8.5",
         "express": "latest",
         "swagger-jsdoc": "^3.2.4",
         "swagger-parser": "^3.4.1",
