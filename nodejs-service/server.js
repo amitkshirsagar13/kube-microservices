@@ -4,6 +4,9 @@ var querystring = require('querystring');
 var SwaggerExpress = require('./admin/monitoring/swagger-stats');
 
 app.get('/', (req, res) => res.send('Hello World!'));
+app.get('/readyz', (req, res) => res.send('OK'));
+app.get('/healthz', (req, res) => res.send('OK'));
+app.get('/metrics', (req, res) => res.send('OK'));
 
 /**
  * @swagger
