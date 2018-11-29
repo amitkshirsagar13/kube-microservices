@@ -1,5 +1,5 @@
 // config.js
-const env = process.env.NODE_ENV || 'dev'; // 'development' or 'test'
+const env = process.env.NODE_ENV || 'development'; // 'development' or 'test'
 
 const development = {
     app: {

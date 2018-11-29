@@ -17,13 +17,17 @@ spec:
         app: node-service
       annotations:
         prometheus.io/scrape: 'true'
+        prometheus.io/port: '3000'
     spec:
       containers:
       - name: node-service
         image: amitkshirsagar13/k8s-node-service:latest
         imagePullPolicy: IfNotPresent
+        env:
+          - name: NODE_ENV
+            value: development
         # command:
-        #   - ./podinfo
+        #   - node server.js
         #   - --port=9898
         #   - --logtostderr=true
         #   - -v=1
@@ -38,23 +42,23 @@ spec:
           httpGet:
             path: /readyz
             port: 3000
-          initialDelaySeconds: 1
-          periodSeconds: 2
+          initialDelaySeconds: 7
+          periodSeconds: 3
           failureThreshold: 1
         livenessProbe:
           httpGet:
             path: /healthz
             port: 3000
-          initialDelaySeconds: 1
+          initialDelaySeconds: 8
           periodSeconds: 3
           failureThreshold: 2
         resources:
           requests:
-            memory: "8Mi"
-            cpu: "10m"
+            memory: "50Mi"
+            cpu: "200m"
           limits:
-            memory: "10Mi"
-            cpu: "50m"
+            memory: "100Mi"
+            cpu: "250m"
       volumes:
         - name: metadata
           downwardAPI:
